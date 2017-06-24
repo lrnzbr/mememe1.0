@@ -41,7 +41,7 @@ import CoreData
             initText()
             
         }
-        
+        //formats text to meme style
         func initText(){
             
             topText.defaultTextAttributes=memeTextAttributes
@@ -187,7 +187,7 @@ import CoreData
             return keyboardSize.cgRectValue.height
         }//end keyboard shifting methods
         
-        
+        //Create Memed image
         
         func generateMemedImage() -> UIImage
         {
