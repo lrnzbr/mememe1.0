@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -57,35 +57,45 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SUJ-cf-kYM" userLabel="Top Text Field">
-                                <rect key="frame" x="163" y="85" width="49" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="35" translatesAutoresizingMaskIntoConstraints="NO" id="SUJ-cf-kYM" userLabel="Top Text Field">
+                                <rect key="frame" x="0.0" y="85" width="375" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="L8T-dn-Y8O"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nB0-yR-i4W" userLabel="Bottom Text Field">
-                                <rect key="frame" x="147" y="569" width="81" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="35" translatesAutoresizingMaskIntoConstraints="NO" id="nB0-yR-i4W" userLabel="Bottom Text Field">
+                                <rect key="frame" x="-12" y="509" width="387" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="2vU-Nm-DnS"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="nB0-yR-i4W" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-6" id="0XC-us-xai"/>
                             <constraint firstItem="463-JD-iNU" firstAttribute="leading" secondItem="k5g-La-pzd" secondAttribute="leading" id="2kO-nU-dLX"/>
                             <constraint firstAttribute="trailing" secondItem="k5g-La-pzd" secondAttribute="trailing" id="ABP-9f-etw"/>
                             <constraint firstItem="k5g-La-pzd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="C3f-Mw-IZE"/>
                             <constraint firstItem="463-JD-iNU" firstAttribute="trailing" secondItem="IKu-VL-lh7" secondAttribute="trailing" id="EBC-Ul-6hO"/>
-                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="top" secondItem="k5g-La-pzd" secondAttribute="top" constant="85" id="GKN-AS-7P7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="k5g-La-pzd" secondAttribute="bottom" id="GP4-ss-cKK"/>
-                            <constraint firstItem="nB0-yR-i4W" firstAttribute="bottom" secondItem="k5g-La-pzd" secondAttribute="bottom" constant="-68" id="N0L-tG-yBk"/>
                             <constraint firstItem="463-JD-iNU" firstAttribute="leading" secondItem="IKu-VL-lh7" secondAttribute="leading" id="NEV-nG-hxG"/>
+                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OJn-Rl-bZ3"/>
+                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="top" secondItem="IKu-VL-lh7" secondAttribute="bottom" constant="21" id="Rsb-nq-6Al"/>
+                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="trailing" secondItem="IKu-VL-lh7" secondAttribute="trailing" id="TEj-aM-mU9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="463-JD-iNU" secondAttribute="bottom" id="XgF-JC-2TU"/>
+                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="trailing" secondItem="k5g-La-pzd" secondAttribute="trailing" id="gGP-mD-Qec"/>
+                            <constraint firstItem="463-JD-iNU" firstAttribute="top" secondItem="nB0-yR-i4W" secondAttribute="bottom" constant="48" id="gMK-GQ-HrI"/>
+                            <constraint firstItem="nB0-yR-i4W" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="12" id="iwu-ez-HI7"/>
                             <constraint firstItem="k5g-La-pzd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jXf-uV-E8O"/>
                             <constraint firstItem="463-JD-iNU" firstAttribute="trailing" secondItem="k5g-La-pzd" secondAttribute="trailing" id="n4z-NM-19d"/>
-                            <constraint firstItem="nB0-yR-i4W" firstAttribute="centerX" secondItem="k5g-La-pzd" secondAttribute="centerX" id="pF4-p8-oaO"/>
-                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="centerX" secondItem="k5g-La-pzd" secondAttribute="centerX" id="pJa-v4-QKF"/>
                             <constraint firstItem="IKu-VL-lh7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qeK-2z-aAQ"/>
+                            <constraint firstItem="SUJ-cf-kYM" firstAttribute="trailing" secondItem="nB0-yR-i4W" secondAttribute="trailing" id="uqP-ag-BfE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -100,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-124" y="-116"/>
+            <point key="canvasLocation" x="-124" y="-116.49175412293854"/>
         </scene>
     </scenes>
 </document>

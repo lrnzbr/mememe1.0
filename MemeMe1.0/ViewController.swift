@@ -33,33 +33,25 @@ import CoreData
         var DEFAULT_BOTTOM_TEXT:String="BOTTOM";
         
         var meme:Meme!
-        
+        var InfoString:[String:AnyObject] = [:]
         
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            initText()
+            initText(textField: topText, withText: "TOP")
+            initText(textField: bottomText, withText: "BOTTOM")
             
         }
         //formats text to meme style
-        func initText(){
+        func initText(textField: UITextField, withText: String){
             
-            topText.defaultTextAttributes=memeTextAttributes
-            topText.textAlignment=NSTextAlignment.center
-            topText.autocapitalizationType=UITextAutocapitalizationType.allCharacters
-            topText.borderStyle=UITextBorderStyle.none
-            topText.backgroundColor=UIColor.clear
-            topText.sizeToFit()
-            topText.delegate=self
-            
-            
-            bottomText.defaultTextAttributes=memeTextAttributes
-            bottomText.textAlignment=NSTextAlignment.center
-            bottomText.autocapitalizationType=UITextAutocapitalizationType.allCharacters
-            bottomText.borderStyle=UITextBorderStyle.none
-            bottomText.backgroundColor=UIColor.clear
-            bottomText.sizeToFit()
-            bottomText.delegate=self
+            textField.defaultTextAttributes=memeTextAttributes
+            textField.textAlignment=NSTextAlignment.center
+            textField.autocapitalizationType=UITextAutocapitalizationType.allCharacters
+            textField.borderStyle=UITextBorderStyle.none
+            textField.backgroundColor=UIColor.clear
+            textField.sizeToFit()
+            textField.delegate=self
             
             reset()
             
@@ -100,15 +92,56 @@ import CoreData
         }
         
         
-        
-        @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
-            
+        func chooseSourceType(sourceType: UIImagePickerControllerSourceType) {
             let imagePickController = UIImagePickerController()
             
+            
             imagePickController.delegate=self
-            imagePickController.sourceType=UIImagePickerControllerSourceType.photoLibrary
+            imagePickController.sourceType=sourceType
             
             present(imagePickController, animated:true, completion: nil)
+            
+
+        
+        }
+        
+        
+        //function to set image in UIImageView when chosen from camera or album
+        
+         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                imagePickerView.contentMode = UIViewContentMode.scaleAspectFit;
+                self.imagePickerView.image = image
+                self.shareButton.isEnabled=true
+                self.cancelButton.isEnabled=true
+            } else{
+                print("Something went wrong")
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        
+        
+        
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        
+
+        @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+            
+            chooseSourceType(sourceType: .photoLibrary)
+            
+        }
+        
+        @IBAction func pickAnImageFromCamera(sender: AnyObject) {
+            
+           chooseSourceType(sourceType: .camera)
             
         }
         
@@ -122,6 +155,7 @@ import CoreData
                 (s, ok, items, err) -> Void in
                 if ok {
                     self.dismiss(animated: true, completion: nil)
+                    self.save()
                 }
             }
             
@@ -131,16 +165,7 @@ import CoreData
         
         
         
-        @IBAction func pickAnImageFromCamera(sender: AnyObject) {
-            
-            let imagePickController = UIImagePickerController()
-            
-            imagePickController.delegate=self
-            imagePickController.sourceType=UIImagePickerControllerSourceType.camera
-            
-            self.present(imagePickController, animated:true, completion: nil)
-            
-        }
+
         
         @IBAction func cancelAction(sender: AnyObject) {
             reset()
@@ -219,30 +244,7 @@ import CoreData
             return memeImage
         }
         
-        //function to set image in UIImageView when chosen from camera or album
-        
-         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-            if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-                imagePickerView.contentMode = UIViewContentMode.scaleAspectFit;
-                self.imagePickerView.image = image
-                self.shareButton.isEnabled=true
-                self.cancelButton.isEnabled=true
-            } else{
-                print("Something went wrong")
-            }
-            
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        
-        
-        
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            
-            self.dismiss(animated: true, completion: nil)
-            
-        }
+
         
       struct Meme{
             var topText : String!
@@ -252,11 +254,9 @@ import CoreData
             
             
         }
-  //      func save() {
+        func save() {
             // Create the meme
-  //          let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imagePickerView.image! //memedImage: memedImage
- //           )
-  //      }
+            _ = Meme(topText: topText.text, bottomText: bottomText.text, image: imagePickerView.image, memedImage: generateMemedImage())        }
         
         
         
